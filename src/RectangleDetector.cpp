@@ -13,6 +13,8 @@
 
 #include <iostream>
 #include <vector>
+#include <algorithm>
+#include <iterator>
 using namespace std;
 
 CRectangleDetector::CRectangleDetector()
@@ -398,10 +400,10 @@ void CRectangleDetector::FilterSquares(const cv::Mat& image,
 	{
 		// Make sure we don't need the old, unfiltered squares data here any more
 		colorSquares[c].clear();
-		std::copy(filteredBySizeSquares[c].begin(), filteredBySizeSquares[c].end(), std::back_inserter(colorSquares[c]));
+		copy(filteredBySizeSquares[c].begin(), filteredBySizeSquares[c].end(), back_inserter(colorSquares[c]));
 	}
 
-	std::copy(sortedByRGBSquares.begin(), sortedByRGBSquares.end(), std::back_inserter(squares));
+	copy(sortedByRGBSquares.begin(), sortedByRGBSquares.end(), back_inserter(squares));
 }
 
 
