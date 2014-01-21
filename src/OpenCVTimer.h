@@ -149,7 +149,7 @@ double COpenCVTimer::getAverageTime() const
 		aveTime = sum_of_elements/static_cast<double>(m_BufHeader);
 		if (!m_bSuppressWarnings)
 		{
-			cout << "Average Time taken over only " << (m_BufHeader+1) << " data points" << endl;
+			cout << "Average Time taken over only " << m_BufHeader << " data points" << endl;
 		}
 	}
 
