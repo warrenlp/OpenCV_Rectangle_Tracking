@@ -7,6 +7,7 @@
 //============================================================================
 
 #include "RectangleDetector.h"
+#include "OpenCVTimer.h"
 
 #include <iostream>
 using namespace std;
@@ -34,6 +35,9 @@ int main(int argc, char *argv[])
 
     cv::Mat frame;
     CRectangleDetector detector;
+    COpenCVTimer findSquaresTimer(10);
+    COpenCVTimer drawSquaresTimer(10);
+    double aveRunTime = 0.0;
 
     for (;;)
     {
@@ -45,8 +49,21 @@ int main(int argc, char *argv[])
         	continue;
         }
 
+        findSquaresTimer.startTimer();
         detector.FindSquares(frame, squares, colorSquares);
+        findSquaresTimer.stopTimer();
+
+        aveRunTime = findSquaresTimer.getAverageTime();
+
+        cout << "Average run time for FindSquares(): " << aveRunTime << "s"<< endl;
+
+        drawSquaresTimer.startTimer();
         detector.DrawSquares(frame, squares);
+        drawSquaresTimer.stopTimer();
+
+        aveRunTime = drawSquaresTimer.getAverageTime();
+
+        cout << "Average run time for DrawSquares(): " << aveRunTime << "s"<< endl;
 
         if (cv::waitKey(30) > 0)
             break;

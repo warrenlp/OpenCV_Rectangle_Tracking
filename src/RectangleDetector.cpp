@@ -26,8 +26,9 @@ CRectangleDetector::CRectangleDetector()
 	// Do Nothing
 }
 
-CRectangleDetector::~CRectangleDetector() {
-	// TODO Auto-generated destructor stub
+CRectangleDetector::~CRectangleDetector()
+{
+	// Do Nothing
 }
 
 // static
@@ -56,6 +57,7 @@ double CRectangleDetector::angle( cv::Point pt1, cv::Point pt2, cv::Point pt0 )
     return (dx1*dx2 + dy1*dy2)/sqrt((dx1*dx1 + dy1*dy1)*(dx2*dx2 + dy2*dy2) + 1e-10);
 }
 
+
 //*****************************************************************************
 /*!
  *  \brief  FilterByMaxSize
@@ -81,6 +83,7 @@ void CRectangleDetector::FilterByMaxSize(const vector<vector<cv::Point> > &color
 		}
 	}
 }
+
 
 //*****************************************************************************
 /*!
